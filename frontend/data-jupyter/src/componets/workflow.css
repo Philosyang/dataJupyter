@@ -1,0 +1,25 @@
+.WorkFlowWrapper {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    display: flex;
+}
+
+.displayArea {
+    position: absolute;
+    left:0;
+    right: 40%;
+}
+
+.dividingStick{
+    position: fixed;
+    background: darkblue;
+    left:65%;
+    height: 100%;
+    width: 0.25%;
+}
+
+.inputArea {
+    position: absolute;
+    left:70%
+}
