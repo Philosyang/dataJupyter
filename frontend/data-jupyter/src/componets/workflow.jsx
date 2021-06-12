@@ -12,6 +12,12 @@ export default function WorkFlow() {
         console.log(stepOneInputPair)
     }, [stepOneInputPair])
 
+
+    const inputNote = {
+        1: "Step 1: please provide the name and insitution of the faculty member you interested in, then the result of google search will be presented."
+    }
+
+
     return(
         <div className = "WorkFlowWrapper">
             <div className = "displayArea">
@@ -27,11 +33,16 @@ export default function WorkFlow() {
                
             </div>
             <div className = "inputArea">
-                <h1> input</h1>
-                {step == 1 ? 
-                <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
-                : step == 2 ? <h1>2step</h1> 
-                : <h1>step3</h1> }
+                <div className = "inputNoteWrapper">
+                    <h3> {inputNote[step]}</h3>
+                </div>
+                <div className = "userInput">
+                    {step == 1 ? 
+                    <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
+                    : step == 2 ? <h1>2step</h1> 
+                    : <h1>step3</h1> }
+                </div>
+
 
             </div>
         </div>
