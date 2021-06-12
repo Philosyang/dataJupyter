@@ -1,5 +1,4 @@
-from flask.json import jsonify
+from flask import jsonify
 
-
-def test():
+def testaba():
     return jsonify("hi")
