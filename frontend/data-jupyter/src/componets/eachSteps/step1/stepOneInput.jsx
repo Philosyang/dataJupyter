@@ -4,11 +4,27 @@ import "./stepOneInput.css"
 
 
 
-export default function StepOneInput() {
+export default function StepOneInput(props) {
     const [name, setName] = useState("")
     const [institution, setInstitution] = useState("")
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
 
+    useEffect(()=>{
+        setInstitution(props.insti);
+        setName(props.name)
+    },[])
+
+    useEffect(
+        ()=>{props.changInputOnePair({name, institution}); console.log({name, institution})}
+    , [isSubmitted])
+
+
+
+
+    const handleStepOneSubmit = () =>{
+        setIsSubmitted(true)
+    }
 
     return(
         <div className = "StepOneInputWrapper">
@@ -17,7 +33,7 @@ export default function StepOneInput() {
                 <TextField id="filled-basic" label="Instituion" variant="filled" onChange = {(e) =>{setInstitution(e.target.value)}}/>
             </div>
             <div className = "submitButton">
-                <Button color = "primary" variant="contained">Submit</Button>
+                <Button color = "primary" variant="contained" onClick={handleStepOneSubmit}>Submit</Button>
             </div>
             <h1>
                 {name},{institution}

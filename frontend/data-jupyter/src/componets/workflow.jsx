@@ -5,6 +5,7 @@ import StepOneInput from "./eachSteps/step1/stepOneInput"
 
 export default function WorkFlow() {
     const [step, setStep] = useState(0)
+    const [stepOneInputPair, setStepOneInputPair] = useState({name: "", institution: ""}) 
 
     return(
         <div className = "WorkFlowWrapper">
@@ -22,7 +23,10 @@ export default function WorkFlow() {
             </div>
             <div className = "inputArea">
                 <h1> input</h1>
-                {step == 1 ? <StepOneInput/> : step == 2 ? <h1>2step</h1> : <h1>step3</h1> }
+                {step == 1 ? 
+                <StepOneInput name = {stepOneInputPair.name} insti = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
+                : step == 2 ? <h1>2step</h1> 
+                : <h1>step3</h1> }
 
             </div>
         </div>
