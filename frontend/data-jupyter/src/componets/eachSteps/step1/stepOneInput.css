@@ -1,0 +1,8 @@
+
+.inputBoxesWrapper{
+    display: flex;
+}
+
+.submitButton{
+    padding: 20px;
+}

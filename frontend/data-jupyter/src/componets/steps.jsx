@@ -2,8 +2,12 @@ import {React, useEffect, useState} from "react"
 import {Button, ButtonGroup} from "@material-ui/core";
 import "./steps.css"
 
-export default function Steps(){
+export default function Steps(props){
     const [selectedBtn, setSelectedBtn] = useState(1);
+
+    useEffect(
+        ()=> props.changeStep(selectedBtn)
+    ,[selectedBtn])
  
     return(
       <div>
@@ -14,10 +18,6 @@ export default function Steps(){
           <Button color={selectedBtn === 4 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(4)}>Step 4</Button>
           <Button color={selectedBtn === 5 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(5)}>Step 5</Button>
           <Button color={selectedBtn === 6 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(6)}>Step 6 </Button>
-
-
-
-
         </ButtonGroup>
       </div>
     );
