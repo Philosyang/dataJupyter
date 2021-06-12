@@ -8,7 +8,7 @@ export default function StepOneInput(props) {
     const [name, setName] = useState(props.name)
     const [institution, setInstitution] = useState(props.institution)
     const [isSubmitted, setIsSubmitted] = useState(false)
-
+    const [url, setUrl] = useState("http://127.0.0.1:5000/");
 
 
 
@@ -20,7 +20,19 @@ export default function StepOneInput(props) {
 
 
     const handleStepOneSubmit = () =>{
+        
         setIsSubmitted(true)
+        fetch(url, {
+            method: 'GET'
+          }).then(response => {
+              console.log("success")
+            if (response.ok) {
+            //   return response.json()
+            console.log("from back end",response)
+            } else {
+                console.log(response.error)
+            }
+          })
     }
 
     return(
