@@ -5,18 +5,15 @@ import "./stepOneInput.css"
 
 
 export default function StepOneInput(props) {
-    const [name, setName] = useState("")
-    const [institution, setInstitution] = useState("")
+    const [name, setName] = useState(props.name)
+    const [institution, setInstitution] = useState(props.institution)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
 
-    useEffect(()=>{
-        setInstitution(props.insti);
-        setName(props.name)
-    },[])
+
 
     useEffect(
-        ()=>{props.changInputOnePair({name, institution}); console.log({name, institution})}
+        ()=>{props.changInputOnePair({name, institution}); console.log("submitted, sent steponeinput state to workflow",{name, institution})}
     , [isSubmitted])
 
 

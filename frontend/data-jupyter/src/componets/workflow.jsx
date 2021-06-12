@@ -7,6 +7,11 @@ export default function WorkFlow() {
     const [step, setStep] = useState(0)
     const [stepOneInputPair, setStepOneInputPair] = useState({name: "", institution: ""}) 
 
+
+    useEffect(()=>{
+        console.log(stepOneInputPair)
+    }, [stepOneInputPair])
+
     return(
         <div className = "WorkFlowWrapper">
             <div className = "displayArea">
@@ -24,7 +29,7 @@ export default function WorkFlow() {
             <div className = "inputArea">
                 <h1> input</h1>
                 {step == 1 ? 
-                <StepOneInput name = {stepOneInputPair.name} insti = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
+                <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
                 : step == 2 ? <h1>2step</h1> 
                 : <h1>step3</h1> }
 
