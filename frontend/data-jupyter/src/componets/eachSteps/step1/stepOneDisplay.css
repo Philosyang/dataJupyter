@@ -2,4 +2,5 @@
     border-style: solid;
     border-color: darkgreen;
     padding: 20px;
+    word-wrap: break-word;
 }

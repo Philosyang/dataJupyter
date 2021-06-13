@@ -16,8 +16,9 @@ export default function WorkFlow() {
     }, [stepOneInputPair])
 
     useEffect(()=>{
-        console.log(stepOneDisplay[0])
-        console.log(typeof(stepOneDisplay))
+        console.log("this is step one display");
+        console.log(stepOneDisplay)
+        
     }, [stepOneDisplay])
 
 
@@ -49,7 +50,7 @@ export default function WorkFlow() {
                 </div>
                 <div className = "userInput">
                     {step === 1 ? 
-                    <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)} displayUrls = { c => setStepOneDisplay(c)}/> 
+                    <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)} displayUrls = { c => setStepOneDisplay(c)} previosDisplay = {stepOneDisplay}/> 
                     : step === 2 ? <h1>2step</h1> 
                     : <h1>step3</h1> }
                 </div>

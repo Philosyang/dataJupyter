@@ -8,7 +8,7 @@ export default function StepOneInput(props) {
     const [name, setName] = useState(props.name)
     const [institution, setInstitution] = useState(props.institution)
     const [isSubmitted, setIsSubmitted] = useState(false)
-    const [displayUrls, setDisplayUrls] = useState([])
+    const [displayUrls, setDisplayUrls] = useState(props.previosDisplay)
     const [url, setUrl] = useState("http://127.0.0.1:5000/aba");
 
 
