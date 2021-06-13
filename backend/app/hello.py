@@ -1,7 +1,7 @@
 from flask import Flask, json, jsonify, request
 import requests
 from bs4 import BeautifulSoup
-
+import time
 # windows powershell
 # $env:FLASK_APP = "hello"
 # $env:FLASK_ENV = "development"
@@ -16,6 +16,10 @@ def home():
     ans.headers.add('Access-Control-Allow-Origin', '*')
     return ans
 
+@app.route('/time')
+def get_current_time():
+    return {'time': time.time()}
+
 @app.route('/test')
 def test2():  # name doesn't matter much
     return jsonify("testtest")
@@ -23,10 +27,10 @@ def test2():  # name doesn't matter much
 @app.route('/aba', methods=['POST'])
 def aba():
     ans = request.get_json()
-    print("here:", ans)
+    print("here:", ans['name'])
     print(type(ans))
     link = abaaba(ans)
-    link.headers.add('Access-Control-Allow-Origin', '*')
+    #link.headers.add('Access-Control-Allow-Origin', '*')
     return link
 
 def get_google_res(key):
@@ -45,7 +49,11 @@ def get_google_res(key):
         link = section.find_all('a')
         if link:
             link = link[0]['href']
-            title = section.find('h3').text
+            try:
+                title = section.find('h3').text
+            except:
+                title = 'NULL'
+            
             item = {
                 "title": title,
                 "link": link
@@ -61,7 +69,8 @@ def get_google_res(key):
 
 def abaaba(faculty_name):
         found = 0
-        name = faculty_name
+        name_dict = faculty_name['name']
+        name = name_dict['name']
         query = name + " main page"
         google_res = get_google_res(query)
         print(google_res)

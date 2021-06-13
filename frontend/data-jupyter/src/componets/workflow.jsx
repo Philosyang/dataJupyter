@@ -37,9 +37,9 @@ export default function WorkFlow() {
                     <h3> {inputNote[step]}</h3>
                 </div>
                 <div className = "userInput">
-                    {step == 1 ? 
+                    {step === 1 ? 
                     <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
-                    : step == 2 ? <h1>2step</h1> 
+                    : step === 2 ? <h1>2step</h1> 
                     : <h1>step3</h1> }
                 </div>
 

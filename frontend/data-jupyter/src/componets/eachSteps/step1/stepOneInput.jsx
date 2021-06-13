@@ -23,7 +23,7 @@ export default function StepOneInput(props) {
         setIsSubmitted(true)
         var data = {name: {name}, institution: {institution}}
         console.log(data)
-        fetch(url, {
+        fetch("/aba", {
             body: JSON.stringify(data),
             method: "POST",
             headers: {
