@@ -2,15 +2,23 @@ import {React, useEffect, useState} from "react"
 import Steps from "./steps"
 import "./workflow.css"
 import StepOneInput from "./eachSteps/step1/stepOneInput"
+import StepOneDisplay from "./eachSteps/step1/stepOneDisplay"
+
 
 export default function WorkFlow() {
     const [step, setStep] = useState(0)
     const [stepOneInputPair, setStepOneInputPair] = useState({name: "", institution: ""}) 
+    const [stepOneDisplay, setStepOneDisplay] = useState([])
 
 
     useEffect(()=>{
         console.log(stepOneInputPair)
     }, [stepOneInputPair])
+
+    useEffect(()=>{
+        console.log(stepOneDisplay[0])
+        console.log(typeof(stepOneDisplay))
+    }, [stepOneDisplay])
 
 
     const inputNote = {
@@ -28,6 +36,9 @@ export default function WorkFlow() {
                     s => setStep(s) 
                 }
                 />
+                <div>
+                    <StepOneDisplay allUrls = {Object.values(stepOneDisplay)}/>
+                </div>
             </div>
             <div className = "dividingStick">
                
@@ -38,7 +49,7 @@ export default function WorkFlow() {
                 </div>
                 <div className = "userInput">
                     {step === 1 ? 
-                    <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)}/> 
+                    <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)} displayUrls = { c => setStepOneDisplay(c)}/> 
                     : step === 2 ? <h1>2step</h1> 
                     : <h1>step3</h1> }
                 </div>

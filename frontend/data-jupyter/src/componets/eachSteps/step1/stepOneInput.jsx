@@ -8,6 +8,7 @@ export default function StepOneInput(props) {
     const [name, setName] = useState(props.name)
     const [institution, setInstitution] = useState(props.institution)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [displayUrls, setDisplayUrls] = useState([])
     const [url, setUrl] = useState("http://127.0.0.1:5000/aba");
 
 
@@ -15,6 +16,10 @@ export default function StepOneInput(props) {
     useEffect(
         ()=>{props.changInputOnePair({name, institution}); console.log("submitted, sent steponeinput state to workflow",{name, institution})}
     , [isSubmitted])
+
+    useEffect(
+        ()=>{props.displayUrls(displayUrls)}
+    ,[displayUrls])
 
 
 
@@ -32,6 +37,11 @@ export default function StepOneInput(props) {
         }).then((response)=>{
             var res = response.json()
             console.log(res)
+            return res
+        }).then((urls)=>{
+            console.log(urls["urls"]);
+            setDisplayUrls(urls["urls"])
+            //()=>{props.displayUrls(urls["urls"])}
         })
     }
 

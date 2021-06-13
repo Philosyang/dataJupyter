@@ -27,11 +27,20 @@ def test2():  # name doesn't matter much
 @app.route('/aba', methods=['POST'])
 def aba():
     ans = request.get_json()
-    print("here:", ans['name'])
+    print("-------------------------------------------")
+    print("here:", ans['name'], ans['institution'])
+    print("--------------------------------------------")
     print(type(ans))
-    link = abaaba(ans)
-    #link.headers.add('Access-Control-Allow-Origin', '*')
-    return link
+    print("--------------------------------------------")
+    print(type(ans['name']['name']))
+    search = ans['name']['name'] + " "+ ans['institution']['institution'] + " " + "main page"
+    link = get_google_res(search)
+    print("--------------------------------------------")
+    print(link)
+    print("--------------------------------------------")
+    print(type(link))
+    ##link.headers.add('Access-Control-Allow-Origin', '*')
+    return {'urls': link}
 
 def get_google_res(key):
 
@@ -58,9 +67,14 @@ def get_google_res(key):
                 "title": title,
                 "link": link
             }
-            results.append(item)
+            results.append(item)        
+    print("--------------------------------------------")
+    print("start to print items")
+    print("--------------------------------------------")
     for item in results:
         print(item)
+    print("--------------------------------------------")
+    print("print items finished")
     return results
 
 
@@ -73,7 +87,7 @@ def abaaba(faculty_name):
         name = name_dict['name']
         query = name + " main page"
         google_res = get_google_res(query)
-        print(google_res)
+        ##print(google_res)
         candidates = []
         for res in google_res:
             url = res['link']
