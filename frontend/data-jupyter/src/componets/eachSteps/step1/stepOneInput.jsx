@@ -10,11 +10,14 @@ export default function StepOneInput(props) {
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [displayUrls, setDisplayUrls] = useState(props.previosDisplay)
     const [url, setUrl] = useState("http://127.0.0.1:5000/aba");
+    const [dis, setDis] = useState({name: "", ins: ""})
 
 
 
     useEffect(
-        ()=>{props.changInputOnePair({name, institution}); console.log("submitted, sent steponeinput state to workflow",{name, institution})}
+        ()=>{props.changInputOnePair({name, institution}); console.log("submitted, sent steponeinput state to workflow",{name, institution})
+        setDis({name: name, ins: institution})
+    }
     , [isSubmitted])
 
     useEffect(
@@ -48,15 +51,21 @@ export default function StepOneInput(props) {
     return(
         <div className = "StepOneInputWrapper">
             <div className = "inputBoxesWrapper">
-                <TextField id="filled-basic" label="Name" variant="filled" onChange = {(e) =>{setName(e.target.value)}}/>
+                <TextField style={{paddingRight: "30px"}} id="filled-basic" label="Name" variant="filled" onChange = {(e) =>{setName(e.target.value)}}/>
                 <TextField id="filled-basic" label="Instituion" variant="filled" onChange = {(e) =>{setInstitution(e.target.value)}}/>
             </div>
             <div className = "submitButton">
                 <Button color = "primary" variant="contained" onClick={handleStepOneSubmit}>Submit</Button>
             </div>
-            <h1>
-                {name},{institution}
-            </h1>
+            {
+                !isSubmitted ? (
+                    <h1></h1>
+                ) : (
+                    <div className = "lastSearch">
+                        <h1>Last search : {name} , {institution}</h1>
+                    </div>
+                )
+            }
 
         </div>
     )

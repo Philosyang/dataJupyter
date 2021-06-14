@@ -8,3 +8,10 @@
 
 }
 
+.titleWrapper {
+    background-color: lightblue;
+    display: table;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: darkblue 5px;
+}

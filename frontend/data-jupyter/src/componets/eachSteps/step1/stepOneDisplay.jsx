@@ -14,7 +14,7 @@ export default function StepOneDisplay(props){
                 return(
                     <div className = "singleBlock">
                         <h1>{a["title"]}</h1>
-                        <h4>{a["link"]}</h4>
+                        <a target="_blank" href = {a["link"]}>{a["link"]}</a>
                     </div>
                 )
             })}

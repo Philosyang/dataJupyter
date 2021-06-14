@@ -38,7 +38,10 @@ export default function WorkFlow() {
                 }
                 />
                 <div>
+                    {step === 1 ? 
                     <StepOneDisplay allUrls = {Object.values(stepOneDisplay)}/>
+                    : step === 2 ? <h1>2step</h1> 
+                    : <h1>step3</h1> }
                 </div>
             </div>
             <div className = "dividingStick">

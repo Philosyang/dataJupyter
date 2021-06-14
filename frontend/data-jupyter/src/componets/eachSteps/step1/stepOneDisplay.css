@@ -1,6 +1,9 @@
 .singleBlock{
     border-style: solid;
-    border-color: darkgreen;
+    border-color: darkblue;
+    border-radius: 20px;
     padding: 20px;
     word-wrap: break-word;
+    margin: 10px;
+    background-color: lightblue;
 }
