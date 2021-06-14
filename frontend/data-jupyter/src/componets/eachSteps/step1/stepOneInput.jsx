@@ -11,6 +11,7 @@ export default function StepOneInput(props) {
     const [displayUrls, setDisplayUrls] = useState(props.previosDisplay)
     const [url, setUrl] = useState("http://127.0.0.1:5000/aba");
     const [dis, setDis] = useState({name: "", ins: ""})
+    
 
 
 
@@ -24,11 +25,16 @@ export default function StepOneInput(props) {
         ()=>{props.displayUrls(displayUrls)}
     ,[displayUrls])
 
+    useEffect(()=>{
+        setDis({name: name, ins: institution})
+    }, [])
+
 
 
     const handleStepOneSubmit = () =>{
 
         setIsSubmitted(true)
+        setDis({name: name, ins: institution})
         var data = {name: {name}, institution: {institution}}
         console.log(data)
         fetch("/aba", {
@@ -58,11 +64,11 @@ export default function StepOneInput(props) {
                 <Button color = "primary" variant="contained" onClick={handleStepOneSubmit}>Submit</Button>
             </div>
             {
-                !isSubmitted ? (
+                dis["name"] === "" ? (
                     <h1></h1>
                 ) : (
                     <div className = "lastSearch">
-                        <h1>Last search : {name} , {institution}</h1>
+                        <h1>Last search : {dis["name"]} , {dis["ins"]}</h1>
                     </div>
                 )
             }

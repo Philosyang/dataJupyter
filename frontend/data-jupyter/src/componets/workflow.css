@@ -37,3 +37,8 @@
     position: relative;
     top: 50px;
 }
+
+.result {
+    background-color:#4d6d9a;
+    text-align: center;
+}

@@ -30,8 +30,9 @@ export default function WorkFlow() {
     return(
         <div className = "WorkFlowWrapper">
             <div className = "displayArea">
-                <h1>displyaer</h1>
-                <h1>{step}</h1>
+                <div className = "result">
+                   <h1 style= {{paddingTop : "5px", paddingBottom: "5px"}}>Result</h1>
+                </div>
                 <Steps 
                 changeStep = {
                     s => setStep(s) 
