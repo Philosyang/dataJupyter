@@ -3,6 +3,7 @@ import Steps from "./steps"
 import "./workflow.css"
 import StepOneInput from "./eachSteps/step1/stepOneInput"
 import StepOneDisplay from "./eachSteps/step1/stepOneDisplay"
+import StepTwoInput from "./eachSteps/step2/stepTwoInput"
 
 
 export default function WorkFlow() {
@@ -23,7 +24,8 @@ export default function WorkFlow() {
 
 
     const inputNote = {
-        1: "Step 1: please provide the name and insitution of the faculty member you interested in, then the result of google search will be presented."
+        1: "Step 1: please provide the name and insitution of the faculty member you interested in, then the result of google search will be presented.",
+        2: "Step 2: select the urls(s) that you are interested in."
     }
 
 
@@ -55,7 +57,9 @@ export default function WorkFlow() {
                 <div className = "userInput">
                     {step === 1 ? 
                     <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)} displayUrls = { c => setStepOneDisplay(c)} previosDisplay = {stepOneDisplay}/> 
-                    : step === 2 ? <h1>2step</h1> 
+                    : step === 2 ? <div>
+                        <StepTwoInput allUrls = {Object.values(stepOneDisplay)}/>
+                    </div>
                     : <h1>step3</h1> }
                 </div>
 

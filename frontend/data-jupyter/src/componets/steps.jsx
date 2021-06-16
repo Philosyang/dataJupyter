@@ -11,7 +11,7 @@ export default function Steps(props){
  
     return(
       <div>
-        <ButtonGroup disableElevation variant="contained" color="primary" orientation= "vertical" className= "selectionSteps" size= "small">
+        <ButtonGroup disableElevation variant="contained" color="primary" orientation= "horizontal" className= "selectionSteps" size= "small">
           <Button color={selectedBtn === 1 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(1)}>Step 1</Button>
           <Button color={selectedBtn === 2 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(2)}>Step 2</Button>
           <Button color={selectedBtn === 3 ? "secondary" : "primary"} onClick={()=>setSelectedBtn(3)}>Step 3</Button>
