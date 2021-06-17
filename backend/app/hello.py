@@ -2,27 +2,23 @@ from flask import Flask, json, jsonify, request
 import requests
 from bs4 import BeautifulSoup
 import time
-# windows powershell
-# $env:FLASK_APP = "hello"
-# $env:FLASK_ENV = "development"
-# python -m flask run
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/')  # landing page
 def home():
     ans = jsonify("Home")
     ans.headers.add('Access-Control-Allow-Origin', '*')
     return ans
 
-@app.route('/time')
-def get_current_time():
-    return {'time': time.time()}
+# @app.route('/time')
+# def get_current_time():
+#     return {'time': time.time()}
 
-@app.route('/test')
-def test2():  # name doesn't matter much
-    return jsonify("testtest")
+# @app.route('/test')
+# def test2():  # name doesn't matter much
+#     return jsonify("testtest")
 
 @app.route('/aba', methods=['POST'])
 def aba():
