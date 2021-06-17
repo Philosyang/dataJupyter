@@ -10,6 +10,8 @@ export default function WorkFlow() {
     const [step, setStep] = useState(0)
     const [stepOneInputPair, setStepOneInputPair] = useState({name: "", institution: ""}) 
     const [stepOneDisplay, setStepOneDisplay] = useState([])
+    const [inputFromStepTwo, setInputFromStepTwo] = useState([])
+    const [stepTwoDisplay, setStepTwoDisplay] = useState()
 
 
     useEffect(()=>{
@@ -21,6 +23,27 @@ export default function WorkFlow() {
         console.log(stepOneDisplay)
         
     }, [stepOneDisplay])
+
+
+    useEffect(()=>{
+        console.log("workf", inputFromStepTwo);
+        console.log(Object.values(stepOneDisplay).map((a,i)=>{return[a,i]}))
+        console.log(Object.values(stepOneDisplay).filter((e,index)=>{inputFromStepTwo.includes(index.toString())}))
+    },[inputFromStepTwo])
+
+
+
+    useEffect(()=>{
+        var unique = inputFromStepTwo.filter((v, i, a) => a.indexOf(v) === i)
+        console.log(unique)
+        setStepTwoDisplay(unique)
+        console.log(Object.values(stepOneDisplay)["0"])
+    },[inputFromStepTwo])
+
+
+
+
+
 
 
     const inputNote = {
@@ -43,7 +66,11 @@ export default function WorkFlow() {
                 <div>
                     {step === 1 ? 
                     <StepOneDisplay allUrls = {Object.values(stepOneDisplay)}/>
-                    : step === 2 ? <h1>2step</h1> 
+                    : step === 2 ? <div>
+                        {stepTwoDisplay.map(a=>{
+                            return <h1> {Object.values(stepOneDisplay)[parseInt(a)]["link"]} </h1>
+                        })}
+                    </div>
                     : <h1>step3</h1> }
                 </div>
             </div>
@@ -58,7 +85,7 @@ export default function WorkFlow() {
                     {step === 1 ? 
                     <StepOneInput name = {stepOneInputPair.name} institution = {stepOneInputPair.institution} changInputOnePair = {s => setStepOneInputPair(s)} displayUrls = { c => setStepOneDisplay(c)} previosDisplay = {stepOneDisplay}/> 
                     : step === 2 ? <div>
-                        <StepTwoInput allUrls = {Object.values(stepOneDisplay)}/>
+                        <StepTwoInput allUrls = {Object.values(stepOneDisplay)} inputChange = {(s)=>{setInputFromStepTwo(s) }   }/>
                     </div>
                     : <h1>step3</h1> }
                 </div>
